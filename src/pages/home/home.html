@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic PDF
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content padding>
+ 
+  <ion-item>
+    <ion-label stacked>From</ion-label>
+    <ion-input [(ngModel)]="letterObj.from"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>To</ion-label>
+    <ion-input [(ngModel)]="letterObj.to"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Text</ion-label>
+    <ion-textarea [(ngModel)]="letterObj.text" rows="10"></ion-textarea>
+  </ion-item>
+ 
+  <button ion-button full (click)="createPdf()">Create PDF</button>
+  <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</button>
+
+  <button ion-button full (click)="scan()">scanner</button>
+  <button ion-button full (click)="getlocalizacion()">getlocalizacion</button>
+
+  <button ion-button full (click)="createDatabase()">createDatabase</button>
+  <button ion-button full (click)="createTable()">createTable</button>
+  <button ion-button full (click)="getAll()">getAll</button>
+  <button ion-button full (click)="create()">create</button>
+  
+  
+  
+   
+   
+  <button ion-button full (click)="takePhoto()" >
+    
+    <ion-icon name="camera"></ion-icon>Take Photo
+    </button>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 >
+          <ion-card class="block">
+          <ion-icon  name="trash" class="deleteIcon"></ion-icon>
+          <img src="someimage.png" />
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <ion-col col-6 *ngFor="let photo of photos; let id = index">
+      <ion-card class="block">
+        <ion-icon name="trash" class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+        <img [src]="photo" *ngIf="photo" />
+      </ion-card>
+</ion-col>
+
+
+
+ 
+ 
+</ion-content>
